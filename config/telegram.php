@@ -3,6 +3,12 @@
 use Telegram\Bot\Commands\HelpCommand;
 
 return [
+
+    'channels_id' => [
+        env('TELEGRAM_CHANNEL_ID1'),
+        env('TELEGRAM_CHANNEL_ID2'),
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Your Telegram Bots
@@ -127,6 +133,8 @@ return [
     */
     'commands' => [
         HelpCommand::class,
+        \App\Telegram\Commands\StartCommand::class,
+        \App\Telegram\Commands\ChatIdCommand::class
     ],
 
     /*
@@ -207,7 +215,7 @@ return [
     |
     */
     'shared_commands' => [
-        // 'start' => Acme\Project\Commands\StartCommand::class,
+        'start' => \App\Telegram\Commands\StartCommand::class,
         // 'stop' => Acme\Project\Commands\StopCommand::class,
         // 'status' => Acme\Project\Commands\StatusCommand::class,
     ],
